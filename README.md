@@ -1,7 +1,7 @@
 ```markdown
 # 🌊 Prototipe Sistem Pengendali Pintu Air Otomatis
 
-Repositori ini berisi kode dan dokumentasi lengkap untuk prototipe sistem kendali otomatis pintu air di bendungan menggunakan Arduino. Sistem mensimulasikan skenario banjir di mana air akan terus naik hingga ketiga pintu terbuka, lalu mulai turun kembali.
+Selamat datang di repositori ini! Di sini, Anda akan menemukan kode dan dokumentasi lengkap untuk prototipe sistem kendali otomatis pintu air di bendungan yang menggunakan Arduino. Sistem ini dirancang untuk mensimulasikan skenario banjir, di mana air akan terus naik hingga ketiga pintu terbuka, dan kemudian mulai turun kembali. Prototipe ini bertujuan untuk menjaga ketinggian air tetap aman selama kondisi darurat.
 
 ---
 
@@ -23,25 +23,25 @@ Repositori ini berisi kode dan dokumentasi lengkap untuk prototipe sistem kendal
 
 ## 📝 Deskripsi Sistem
 
-**Tujuan Utama**  
-- Membuat prototipe kendali otomatis 3 pintu air di bendungan.  
-- Menyalurkan kelebihan air saat banjir agar ketinggian tetap aman.
+### **Tujuan Utama**  
+- Membangun prototipe kendali otomatis untuk tiga pintu air di bendungan.  
+- Menyalurkan kelebihan air saat banjir untuk menjaga ketinggian air tetap aman.
 
-**Cara Kerja**  
+### **Cara Kerja**  
 1. **Pengukuran Level**  
-   - HC‑SR04 mengukur jarak ke permukaan air → dikonversi ke `levelAir`.  
+   - Sensor HC‑SR04 mengukur jarak ke permukaan air dan mengonversinya menjadi nilai `levelAir`.  
 2. **Logika Kontrol Pintu**  
-   - `levelAir > 10 cm` → Buka Pintu 1  
-   - `levelAir > 15 cm` → Buka Pintu 2  
-   - `levelAir > 20 cm` → Buka Pintu 3 → masuk fase **draining**  
-   - Saat `levelAir ≤ 10 cm` → Tutup semua pintu → kembali fase **rising**  
+   - Jika `levelAir > 10 cm`, maka Pintu 1 akan terbuka.  
+   - Jika `levelAir > 15 cm`, maka Pintu 2 akan terbuka.  
+   - Jika `levelAir > 20 cm`, maka Pintu 3 akan terbuka dan sistem akan masuk ke fase **draining**.  
+   - Saat `levelAir ≤ 10 cm`, semua pintu akan ditutup dan sistem kembali ke fase **rising**.  
 3. **Perubahan Level**  
-   - **Rising**: level naik akibat hujan  
-   - **Draining**: level turun akibat semua pintu terbuka  
+   - **Rising**: Level air meningkat akibat hujan.  
+   - **Draining**: Level air menurun karena semua pintu terbuka.  
 4. **Feedback**  
-   - **LCD I²C 16×2**: menampilkan level & status pintu  
-   - **Buzzer**: alarm saat pintu mulai membuka  
-   - **Serial Monitor**: mencatat level, arah, dan debit
+   - **LCD I²C 16×2**: Menampilkan level air dan status pintu.  
+   - **Buzzer**: Mengeluarkan alarm saat pintu mulai membuka.  
+   - **Serial Monitor**: Mencatat level, arah, dan debit aliran air.
 
 ---
 
@@ -49,26 +49,17 @@ Repositori ini berisi kode dan dokumentasi lengkap untuk prototipe sistem kendal
 
 | Komponen               | Fungsi                                                         |
 |------------------------|---------------------------------------------------------------|
-| **Arduino Uno/Nano**   | Mikrokontroler, menjalankan logika dan kendali I/O            |
-| **HC‑SR04 Ultrasonik** | Sensor jarak → data ketinggian air                            |
-| **3× Servo SG‑90**     | Aktuator membuka/menutup pintu air                            |
-| **LCD 16×2 (I²C)**     | Tampilan real‑time level air & status pintu                   |
-| **Buzzer Piezo**       | Alarm audio saat pintu bergerak                                |
-| **Breadboard & Kabel** | Sambungan sinyal dan daya antar komponen                      |
-| **Power Supply 5 V**   | Daya stabil untuk Arduino, sensor, servo, dan LCD             |
+| **Arduino Uno/Nano**   | Mikrokontroler yang menjalankan logika dan kendali I/O        |
+| **HC‑SR04 Ultrasonik** | Sensor jarak yang memberikan data ketinggian air              |
+| **3× Servo SG‑90**     | Aktuator yang membuka dan menutup pintu air                   |
+| **LCD 16×2 (I²C)**     | Tampilan real-time untuk level air dan status pintu           |
+| **Buzzer Piezo**       | Alarm audio yang berbunyi saat pintu bergerak                  |
+| **Breadboard & Kabel** | Media untuk menyambungkan sinyal dan daya antar komponen      |
+| **Power Supply 5 V**   | Sumber daya stabil untuk Arduino, sensor, servo, dan LCD      |
 
 ---
-
-## 🗺️ Skema Blok
-
 ```
-[HC‑SR04] --data--> [Arduino]
-├─▶ [Servo Pintu 1]
-├─▶ [Servo Pintu 2]
-├─▶ [Servo Pintu 3]
-├─▶ [LCD 16×2]
-└─▶ [Buzzer]
-```
+
 
 ---
 
