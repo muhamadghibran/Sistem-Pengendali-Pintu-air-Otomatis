@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "author": "MUHAMAD GHIBRAN MUSLIH",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -180.9,
+      "left": 91.9,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -117.2,
+      "left": 278.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo2",
+      "top": -11.6,
+      "left": 278.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo3",
+      "top": 94,
+      "left": 278.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 217.6,
+      "left": 15.2,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 6,
+      "left": -44.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 73.2,
+      "left": -44.2,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 150,
+      "left": -44.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -122.4,
+      "left": 30.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    ["ultrasonic1:VCC", "uno:5V", "red", ["v0"]],
+    ["ultrasonic1:GND", "uno:GND.1", "black", ["v0"]],
+    ["ultrasonic1:TRIG", "uno:9", "green", ["v0"]],
+    ["ultrasonic1:ECHO", "uno:10", "green", ["v0"]],
+    ["servo1:GND", "uno:GND.1", "black", ["h0"]],
+    ["servo2:GND", "uno:GND.1", "black", ["h0"]],
+    ["servo3:GND", "uno:GND.1", "black", ["h0"]],
+    ["servo1:V+", "uno:5V", "green", ["h0"]],
+    ["servo1:PWM", "uno:3", "green", ["h0"]],
+    ["servo2:V+", "uno:5V", "green", ["h0"]],
+    ["servo3:V+", "uno:5V", "green", ["h0"]],
+    ["servo2:PWM", "uno:5", "green", ["h0"]],
+    ["servo3:PWM", "uno:6", "green", ["h0"]],
+    ["lcd1:VCC", "uno:5V", "red", ["h0"]],
+    ["lcd1:GND", "uno:GND.1", "black", ["h0"]],
+    ["lcd1:SDA", "uno:A4", "green", ["h0"]],
+    ["lcd1:SCL", "uno:A5", "green", ["h0"]],
+    ["led1:A", "uno:11", "green", ["v0"]],
+    ["led1:C", "uno:GND.1", "green", ["v0"]],
+    ["led2:A", "uno:12", "green", ["v0"]],
+    ["led2:C", "uno:GND.1", "green", ["v0"]],
+    ["led3:A", "uno:13", "green", ["v0"]],
+    ["led3:C", "uno:GND.1", "green", ["v0"]],
+    ["bz1:2", "uno:2", "green", ["v0"]],
+    ["bz1:1", "uno:GND.1", "green", ["v0"]],
+    ["bz1:1", "uno:2", "green", ["v0"]],
+    ["bz1:2", "uno:GND.1", "green", ["v0"]]
+  ],
+  "dependencies": {}
+}
